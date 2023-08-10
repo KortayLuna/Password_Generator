@@ -1,5 +1,5 @@
 import json
-from random import choice
+from secrets import choice
 
 char = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!'^^+%&/()=?_-.,"
 
@@ -9,10 +9,9 @@ passwords= []
 with open("store_password.json", "r") as f:
     storedpasswords = json.load(f)
 
-password = ''
-for len in range(length):
-    password += choice(char)
 
+password = ''.join(choice(char) for _ in range(length))
+   
 passwords = {"WhereToUse": whereToUse, "Password": password}
 storedpasswords["passwords"].append(passwords)
 
